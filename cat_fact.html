@@ -26,14 +26,18 @@
                 var x = document.getElementById("amount").value;
                 var count = 0;
                 document.getElementById("info").innerHTML = ""
-                while(count<x){
-                    count = count +1;
-                    $("#info").append("<p>" +count + ".</p>") 
-                    $("#info").append($("<div></div>").load("getcatfacts.php?t="+Math.random()));
-                    $("#info").append('<a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif&t=' + Math.random() + '"></a>')
-                    <!-- Math.random() for clearing cache, found the idea on w3schools.com -->
-                    <!-- http://thecatapi.com/ -->
-                   
+                if(count>1000){
+                    document.getElementById("info").innerHTML = "That's too many facts";
+                }
+                else{
+                    while(count<x){
+                        count = count +1;
+                        $("#info").append("<p>" +count + ".</p>") 
+                        $("#info").append($("<div></div>").load("getcatfacts.php?t="+Math.random()));
+                        $("#info").append('<a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif&t=' + Math.random() + '"></a>')
+                        <!-- Math.random() for clearing cache, found the idea on w3schools.com -->
+                        <!-- http://thecatapi.com/ -->
+                    }
                 }
         });
     });
