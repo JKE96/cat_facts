@@ -1,0 +1,41 @@
+
+<html>
+    <head>
+        <title>Cat_fact</title>
+        <style>
+            body{
+                background-color:lightblue;
+            }
+            p{
+                font-size:30px;
+                color:green;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>This is the cat facts page. Type how many facts you want to see in the text box and then click the button</h1>
+        <input type="number" id="amount" placeholder="How many cat facts?" max="1000">
+        <button>Click me</button>  
+        <div id="info"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+    <script>
+        
+        $(document).ready(function(){
+             $("button").click(function(){
+                var x = document.getElementById("amount").value;
+                if(x>10000){
+                    document.getElementById("info").innerHTML = "Thats too many facts";
+                }
+                else{
+                    document.getElementById("info").innerHTML = "";
+                        $("#info").append($("<div></div>").load("getcatfacts2.php?amount=" + x));
+                        $("#info").append('<a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif&t=' + Math.random() + '"></a>');
+                        <!-- Math.random() for clearing cache, found the idea on w3schools.com -->
+                        <!-- http://thecatapi.com/ -->
+                }
+        });
+    });
+    </script>
+    </body>
+</html>

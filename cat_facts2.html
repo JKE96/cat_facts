@@ -1,0 +1,68 @@
+
+<html>
+    <head>
+        <title>Cat_facts</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            body{
+                background-color:blue;
+            }
+            p{
+                font-size:30px;
+                color:green;
+            }
+            .row{
+                background-color:white;
+            }
+           
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <br>
+            <br>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+                <h1>Get Cat Facts</h1>
+                <input type="number" id="amount" placeholder="How many cat facts?">
+                <button type="button" class="btn btn-primary">Click me</button>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+                <div id="line"><br><br><img src="line.png" width="10%"></div>
+            </div>
+            <div class="col-sm-3">
+                <div id="info"></div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        </div>
+        
+    
+    <script>
+        
+        $(document).ready(function(){
+             $("button").click(function(){
+                var x = document.getElementById("amount").value;
+                var count = 0;
+                document.getElementById("info").innerHTML = "<br><br><br><br>"
+                document.getElementById("line").innerHTML = "<br><br>"
+                if(x>1000){
+                    document.getElementById("info").innerHTML = "That's too many facts";
+                }
+                else{
+                    while(count<x){
+                        count = count +1;
+                        $("#line").append("<img src='line.png' width='10%'><br>");
+                    }
+                    $("#info").append($("<div></div>").load("getcatfacts2.php?amount="+ x));
+                    <!-- Math.random() for clearing cache, found the idea on w3schools.com -->
+                }
+        });
+    });
+    </script>
+    </body>
+</html>
